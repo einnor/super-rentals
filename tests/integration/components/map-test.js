@@ -49,6 +49,19 @@ module('Integration | Component | map', function(hooks) {
     assert.dom('.map img').hasAttribute('height', '120');
   });
 
+  test('the default alt attribute can be overridden', async function(assert) {
+    await render(hbs`<Map
+      @lat="37.7797"
+      @lng="-122.4184"
+      @zoom="10"
+      @width="150"
+      @height="120"
+      alt="A map of San Francisco"
+    />`);
+
+    assert.dom('.map img').hasAttribute('alt', 'A map of San Francisco');
+  });
+
   test('it updates the `src` attribute when the arguments change', async function(assert) {
     this.setProperties({
       lat: 37.7749,
