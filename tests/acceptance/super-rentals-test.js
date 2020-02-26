@@ -64,4 +64,22 @@ module('Acceptance | super rentals', function(hooks) {
     await click('nav a.menu-index');
     assert.equal(currentURL(), '/');
   });
+
+  test('viewing the details of a rental property', async function(assert) {
+    await visit('/');
+    assert.dom('.rental').exists({ count: 3 });
+
+    await click('.rental:first-of-type a');
+    assert.equal(currentURL(), '/rentals/grand-old-mansion');
+  });
+
+  test('visiting /rentals/grand-old-mansion', async function(assert) {
+    await visit('/rentals/grand-old-mansion');
+
+    assert.equal(currentURL(), '/rentals/grand-old-mansion');
+    assert.dom('nav').exists();
+    assert.dom('h1').containsText('SuperRentals');
+    assert.dom('h2').containsText('Grand Old Mansion');
+    assert.dom('.rental.detailed').exists();
+  });
 });
