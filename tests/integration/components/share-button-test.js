@@ -50,4 +50,9 @@ module('Integration | Component | share-button', function(hooks) {
     await render(hbs`<ShareButton @hashtags="foo,bar,baz">Tweet this!</ShareButton>`);
     assert.equal(this.tweetParam('hashtags'), 'foo,bar,baz');
   });
+
+  test('it supports passing @via', async function(assert) {
+    await render(hbs`<ShareButton @via="emberjs">Tweet this!</ShareButton>`);
+    assert.equal(this.tweetParam('via'), 'emberjs');
+  });
 });
