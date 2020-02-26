@@ -55,4 +55,13 @@ module('Integration | Component | share-button', function(hooks) {
     await render(hbs`<ShareButton @via="emberjs">Tweet this!</ShareButton>`);
     assert.equal(this.tweetParam('via'), 'emberjs');
   });
+
+  test('it supports adding extra classes', async function(assert) {
+    await render(hbs`<ShareButton class="extra things">Tweet this!</ShareButton>`);
+
+    assert.dom('a').hasClass('share');
+    assert.dom('a').hasClass('button');
+    assert.dom('a').hasClass('extra');
+    assert.dom('a').hasClass('things');
+  });
 });
