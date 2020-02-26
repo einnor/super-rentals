@@ -64,4 +64,12 @@ module('Integration | Component | share-button', function(hooks) {
     assert.dom('a').hasClass('extra');
     assert.dom('a').hasClass('things');
   });
+
+  test('the target, rel and href attributes cannot be overridden', async function(assert) {
+    await render(hbs`<ShareButton target="_self" rel="" href="/">Not a Tweet!</ShareButton>`);
+
+    assert.dom('a').hasAttribute('target', '_blank');
+    assert.dom('a').hasAttribute('rel', 'external nofollow noopener noreferrer');
+    assert.dom('a').hasAttribute('href', /^https:\/\/twitter\.com\/intent\/tweet/);
+  });
 });
