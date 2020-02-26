@@ -6,7 +6,7 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | rentals', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders all given rental properties by default', async function(assert) {
+  hooks.beforeEach(function() {
     this.setProperties({
       rentals: [{
         id: 'grand-old-mansion',
@@ -54,7 +54,9 @@ module('Integration | Component | rentals', function(hooks) {
         description: 'Convenience is at your doorstep with this charming downtown rental. Great restaurants and active night life are within a few feet.'
       }]
     });
+  });
 
+  test('it renders all given rental properties by default', async function(assert) {
     await render(hbs`<Rentals @rentals={{this.rentals}} />`);
 
     assert.dom('.rentals').exists();
