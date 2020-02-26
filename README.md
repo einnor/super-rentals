@@ -1,7 +1,10 @@
 # super-rentals
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Find the next place to stay!
+
+<img src="public/screenshots/home.png" style="width: 100%" alt="Home" />
+
+<img src="public/screenshots/rental.png" style="width: 100%" alt="Rental Details" />
 
 ## Prerequisites
 
